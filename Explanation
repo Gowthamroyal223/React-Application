@@ -1,0 +1,152 @@
+Step 1: Set up the Node.js server
+Create a new directory for your project and initialize it with npm:
+
+bash
+Copy code
+mkdir react-node-postgres-app
+cd react-node-postgres-app
+npm init -y
+Install necessary dependencies:
+
+bash
+Copy code
+npm install express pg
+Create the main server file server.js:
+
+javascript
+Copy code
+// server.js
+
+const express = require('express');
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  user: 'your_username',
+  host: 'localhost',
+  database: 'your_database_name',
+  password: 'your_password',
+  port: 5432,
+});
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(Server running on port ${PORT}));
+This sets up a basic Express server that listens on port 5000 and connects to your PostgreSQL database.
+
+Step 2: Set up PostgreSQL Database
+You need to have PostgreSQL installed on your machine. Create a database and a table for our application.
+
+Connect to PostgreSQL:
+
+bash
+Copy code
+psql -U your_username -d your_database_name
+Create the customers table:
+
+sql
+Copy code
+CREATE TABLE customers (
+  sno SERIAL PRIMARY KEY,
+  customer_name VARCHAR(100) NOT NULL,
+  age INT,
+  phone VARCHAR(20),
+  location VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+Step 3: Insert Dummy Data
+Insert 50 dummy records into the customers table:
+
+sql
+Copy code
+INSERT INTO customers (customer_name, age, phone, location)
+VALUES
+  ('John Doe', 30, '1234567890', 'New York'),
+  ('Jane Smith', 25, '0987654321', 'Los Angeles'),
+  -- Add 48 more records here...
+;
+Step 4: Set up React Frontend
+Create a new React app using Create React App:
+
+bash
+Copy code
+npx create-react-app frontend
+cd frontend
+Install necessary dependencies:
+
+bash
+Copy code
+npm install axios react-table
+Create a component to display the customer data:
+
+jsx
+Copy code
+// src/components/CustomerTable.js
+
+import React from 'react';
+import axios from 'axios';
+import { useTable } from 'react-table';
+
+const CustomerTable = () => {
+  // Fetch customer data from the server
+  const fetchCustomerData = async () => {
+    try {
+      const response = await axios.get('/customers');
+      console.log(response.data);
+      // Handle response data here
+    } catch (error) {
+      console.error('Error fetching customer data:', error);
+    }
+  };
+
+  // Call fetchCustomerData when component mounts
+  React.useEffect(() => {
+    fetchCustomerData();
+  }, []);
+
+  return (
+    <div>
+      <h1>Customer Table</h1>
+      {/* Display customer data here */}
+    </div>
+  );
+};
+
+export default CustomerTable;
+Step 5: Connect Frontend to Backend
+Update src/App.js to render the CustomerTable component:
+
+jsx
+Copy code
+// src/App.js
+
+import React from 'react';
+import './App.css';
+import CustomerTable from './components/CustomerTable';
+
+function App() {
+  return (
+    <div className="App">
+      <CustomerTable />
+    </div>
+  );
+}
+
+export default App;
+Step 6: Run the Application
+Start both the frontend and backend servers:
+
+bash
+Copy code
+# In the react-node-postgres-app directory
+node server.js
+
+# In the frontend directory
+npm start
+This should open your browser with the React app running at http://localhost:3000/ and your Node.js server running at http://localhost:5000/.
+
+This is a basic setup to get you started. You'll need to implement functionality for fetching, displaying, searching, and sorting the customer data in the React frontend, as well as creating appropriate API endpoints in the Node.js backend to handle these actions. Let me know if you need further assistance with any specific part!
