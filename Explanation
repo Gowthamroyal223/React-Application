@@ -1,3 +1,68 @@
+EXPLANATION:
+************
+This SQL snippet creates a table named customers with columns sno, customer_name, age, phone, location, and created_at.
+Populate the database with 50 dummy records:
+This is a manual step where you would insert dummy data into the customers table using SQL INSERT statements.
+
+Set up the backend server (server.js)
+------------------------------------------
+It imports required modules (express, sequelize) and sets up an instance of the Express app.
+The Sequelize instance is initialized to connect to the PostgreSQL database.
+A Sequelize model Customer is defined to represent the customers table.
+An Express route (GET /api/customers) is created to handle requests for fetching customer data.
+It accepts query parameters for pagination (page), search (search), and sorting (sortBy).
+It uses Sequelize's findAndCountAll method to fetch paginated and filtered data from the database based on the query parameters.
+The retrieved data is sent back as a JSON response.
+Creating a GitHub repository:
+-------------------------------
+Push the backend and frontend code to separate directories in a GitHub repository.
+Ensure that the README.md file includes instructions on how to set up and run the project.
+Creating an explanatory video
+*******************************************************************
+
+README.md
+----------
+Set up a Node.js project with framework:
+Set up routes for creating, reading, updating, and deleting records.
+Install Sequelize and PostgreSQL driver.
+************************************************
+Create an endpoint to create 50 records with dummy data.
+Create an endpoint to retrieve paginated records.
+Implement search functionality to filter records by name or location.
+Implement sorting functionality by date or time.
+Frontend (React)
+Set up a React project:
+Create a new React project using create-react-app or any other method of your choice.
+Create components:
+Create a component to display the table with records.
+Implement a pagination component to navigate through pages.
+Display data in table format:
+Add options for sorting records by date or time.
+Send sorting criteria to the backend and update the UI with sorted results.
+
+
+*************************************************************
+
+ReactJS
+***********
+React is an open source, JavaScript library for developing user interface (UI) in web application. React is developed and released by Facebook in 2013. 
+Facebook is continuously working on the React library and enhancing it by fixing bugs and introducing new features.
+ReactJS is a popular JavaScript library for building user interfaces, particularly for single-page applications (SPAs) and dynamic web applications.
+React allows developers to create reusable UI components and manage their state efficiently.
+Applications:
+************
+ 	Facebook, popular social media application 
+ 	Instagram, popular photo sharing application
+ 	Netflix, popular media streaming application
+ 	Code Academy, popular online training application
+ 	Reddit, popular content sharing application
+PostgreSQL
+**********
+PostgreSQL (pronounced as post-gress-Q-L) is an open source relational database management system (DBMS) developed by a worldwide team of volunteers. PostgreSQL is not controlled by any corporation or other private entity and the source code is available free of charge.
+Nodejs
+********
+Node.js is a very powerful JavaScript-based platform built on Google Chrome's JavaScript V8 Engine. It is used to develop I/O intensive web applications like video streaming sites, single-page applications, and other web applications. Node.js is open source, completely free, and used by thousands of developers around the world.
+
 Step 1: Set up the Node.js server
 Create a new directory for your project and initialize it with npm:
 
