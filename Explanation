@@ -1,20 +1,18 @@
 Step 1: Set up the Node.js server
 Create a new directory for your project and initialize it with npm:
 
-bash
-Copy code
+
 mkdir react-node-postgres-app
 cd react-node-postgres-app
 npm init -y
 Install necessary dependencies:
 
-bash
-Copy code
+
 npm install express pg
 Create the main server file server.js:
 
 javascript
-Copy code
+
 // server.js
 
 const express = require('express');
@@ -43,13 +41,12 @@ You need to have PostgreSQL installed on your machine. Create a database and a t
 
 Connect to PostgreSQL:
 
-bash
-Copy code
+
 psql -U your_username -d your_database_name
 Create the customers table:
 
 sql
-Copy code
+
 CREATE TABLE customers (
   sno SERIAL PRIMARY KEY,
   customer_name VARCHAR(100) NOT NULL,
@@ -62,7 +59,7 @@ Step 3: Insert Dummy Data
 Insert 50 dummy records into the customers table:
 
 sql
-Copy code
+
 INSERT INTO customers (customer_name, age, phone, location)
 VALUES
   ('John Doe', 30, '1234567890', 'New York'),
@@ -72,19 +69,17 @@ VALUES
 Step 4: Set up React Frontend
 Create a new React app using Create React App:
 
-bash
-Copy code
+
 npx create-react-app frontend
 cd frontend
 Install necessary dependencies:
 
-bash
-Copy code
+
 npm install axios react-table
 Create a component to display the customer data:
 
 jsx
-Copy code
+
 // src/components/CustomerTable.js
 
 import React from 'react';
@@ -121,7 +116,6 @@ Step 5: Connect Frontend to Backend
 Update src/App.js to render the CustomerTable component:
 
 jsx
-Copy code
 // src/App.js
 
 import React from 'react';
@@ -140,8 +134,6 @@ export default App;
 Step 6: Run the Application
 Start both the frontend and backend servers:
 
-bash
-Copy code
 # In the react-node-postgres-app directory
 node server.js
 
